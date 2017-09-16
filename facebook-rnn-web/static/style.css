@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Droid Sans Mono', monospace;
+    color: black;
+    padding: 0 15px 0 15px;
+    line-height: 1.6;
+    height: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.header {
+    line-height: 1.3;
+    padding-top: 15px;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.sub-header {
+    color: #3b5998;
+    margin-top:0;
+    padding-left: 20px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #444;
+}
+
+#next-and-loading {
+    margin-top: 10px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+#next {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+#loading-indicator {
+    margin-right: auto;
+    padding-left: 5px;
+    color: #444;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+#message {
+    border-top: 1px dashed #444;
+    border-bottom: 1px dashed #444;
+    padding: 5px 0 5px 0;
+    margin: 5px 0 5px 0;
+    word-wrap: break-word;
+    word-break: normal;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+#accordion {
+    margin-top: 10px;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.accordion-toggle {
+    cursor: pointer;
+    margin-right: auto;
+    padding: 5px 0 5px 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.accordion-content {
+    display: none;
+    margin-right: auto;
+    color: #444;
+}
+
+p {
+    padding: 5px 0 5px 0;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 50px;
+    padding-bottom: 15px;
+    color: #444;
+    font-size: small;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}

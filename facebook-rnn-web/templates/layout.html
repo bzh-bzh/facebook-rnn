@@ -1,0 +1,152 @@
+<!--
+Hyttbui qhu vkd - mekbtd'j oek qwhuu?
+Ted'j mehho xed, jxyi'bb ru q rhuupu
+Rqsa je igkqhu edu, jxu jhqyb oek vyhij iuu
+beefi rqsa qdt hkdi jxhekwx fqhudjxuiui.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="static/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/icons/favicon-16x16.png">
+    <link rel="manifest" href="static/icons/manifest.json">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000">
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+
+    <title>Benjamin.io</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Benjamin.io</h1>
+        <span class="sub-header">simulated conversations.</span>
+    </div>
+
+    <div id="next-and-loading">
+        <a href="#" id=next>Next ==></a>
+        <span id="loading-indicator"></span>
+    </div>
+
+    <span id=message><span style="color:red;">Welcome! Be warned--there may be profanity here.</span></span>
+
+    <div id="accordion">
+        <h4 class="accordion-toggle">What is this?</h4>
+        <div class="accordion-content">
+            <p>
+                I fed every s<span style="color:fuchsia;">i</span>ngle one of my Facebook private messages i<span style="color:fuchsia;">n</span>to a machine learning model called a neural
+                network. From my messages, the neural network learned what my writing style was like, and generated new,
+                <span style="color:fuchsia;">s</span>imulated Facebook messages, which are displayed above.
+            </p>
+        </div>
+        <h4 class="accordion-toggle">How does it work?</h4>
+        <div class="accordion-content">
+            <p>
+                I downloaded all of my <span style="color:fuchsia;">p</span>ersonal data from Facebook(you can do that from the settings page), and wrote a
+                tiny Python script to parse the HTML file that contained all of my personal messages, into a list of all
+                my messages, separated by newlines.
+            </p>
+            <p>
+	            I then fed that into <a href="https://github.com/jcjohnson/torch-rnn">torch-rnn</a> to train recurrent
+                neural networks until I was satisfi<span style="color:fuchsia;">e</span>d with the output
+                I was getting from them. The one I finally settled on had 512 nodes per layer, and 3 layers. On my
+                pretty old Nvidia GTX 650 card, it took around 6 hours to train.
+            </p>
+            <p>
+	            I've got a <a href="https://cloud.google.com/compute/">Google Compute Engine</a> VM running a Python
+                script that <span style="color:fuchsia;">c</span>ontinually runs the command to get
+                output from my neural network. It then separates the output by newlines into messages, censors my
+                friends' names, and uploads each message, with me<span style="color:fuchsia;">t</span>adata about creation date and length, to
+                <a href="https://cloud.google.com/datastore/">Google Datastore</a>, a NoSQL database.
+            </p>
+            <p>
+	            This website is built on the Python micro-framework <a href="http://flask.pocoo.org/">Flask</a>(bit of a
+                trend h<span style="color:fuchsia;">e</span>re, haha), and uses AJAX to fetch
+                the messages you see above from the server, which is hosted on
+                <a href="https://cloud.google.com/appengine/">Google App Engine.</a>
+            </p>
+        </div>
+        <h4 class="accordion-toggle">Why did you do this?</h4>
+        <div class="accordion-content">
+            <p>
+                I recent<span style="color:fuchsia;">l</span>y read the excellent articl<span style="color:fuchsia;">e</span> <a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/">
+                “The Unreasonable Effectiveness of Recurrent Neural Networks”</a>,
+                and thought it would be fun and interesting to see what kind of output an RNN would <span style="color:fuchsia;">m</span>ake, given all of
+                my Facebook messages. The output I got really surprised m<span style="color:fuchsia;">e</span>! The neural network uses emoticons, makes up
+                URLs with (mostly) valid syntax, and generally emulates the writing style I use when writing Facebook
+                messages.
+            </p>
+            <p>
+                As for why I decided to host this: I've always wanted a personal website, and I thought this would be a
+                <span style="color:fuchsia;">n</span>ice first project to showcase on it! Hopefully, there'll be many more under <span style="color:fuchsia;">t</span>his domain in the future :)
+            </p>
+        </div>
+        <h4 class="accordion-toggle">Credits</h4>
+        <div class="accordion-content">
+            <p>
+                This webapp was built using <a href="http://flask.pocoo.org/">Flask</a> and
+                <a href="https://jquery.com/>">jQuery</a>. I trained my neural network using
+                <a href="https://github.com/jcjohnson/torch-rnn">torch-rnn</a>, an optimized
+                rewrite of <a href="https://github.com/karpathy/char-rnn">char-rnn</a>. Huge thanks to Andrej Karpathy,
+                for writing a fascinating and understandable article
+                about the power of recurrent neural networks. Check it out
+                <a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/">here.</a> I took my design inspiration
+                from the
+                <a href="http://motherfuckingwebsite.com/">A</a>/<a href="http://bettermotherfuckingwebsite.com/">Better</a>/<a href="https://bestmotherfucking.website/">Best</a> Motherfucking Website series.
+            </p>
+        </div>
+        <h4 class="accordion-toggle">About me</h4>
+        <div class="accordion-content">
+            <p>
+                Hey, thanks for reading this far. I'm Benjamin Zhang, a high school senior in the Bay Area. I spent maybe
+                too much time coding this, but I definitely had a great time setting this up. It's been a huge learning
+                experience, from learning to work with Google's suite of cloud services, to using Flask and jQuery to
+                make this very website.
+            </p>
+            <p>
+                Look forward to more things from me in the future!
+            </p>
+            <p>
+                Questions? Comments? Bugs? Confessions of undying love? Email me at <a href="mailto:benzhang4@gmail.com">benzhang4@gmail.com.</a>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <span>Copyright &copy; 20<span style="color:fuchsia;">16</span><script>new Date().getFullYear()>2016&&document.write("-"+new Date().getFullYear());</script>, Benjamin Zhang.</span>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery-3.1.0.min.js') }}">\x3C/script>')
+    </script>
+    <script src="{{ url_for('static', filename='autolink-min.js') }}"></script>
+    <script type="text/javascript">
+            $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="{{ url_for('static', filename='next-button.js') }}"></script>
+    <!-- Credit for accordion goes to http://uniondesign.ca/simple-accordion-without-jquery-ui/ -->
+    <script src="{{ url_for('static', filename='accordion.js') }}"></script>
+    <script src="{{ url_for('static', filename='google-stats.js') }}"></script>
+
+</body>
+</html>

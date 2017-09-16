@@ -1,0 +1,6 @@
+indexes:
+
+- kind: Message
+  properties:
+    - name: __key__
+      direction: desc
